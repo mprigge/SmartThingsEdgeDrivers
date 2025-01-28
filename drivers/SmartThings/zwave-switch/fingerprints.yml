@@ -739,11 +739,11 @@ zwaveManufacturer:
     productId: 0xAA02
     deviceProfileName: switch-level
   - id: 0312/C000/C002
-    deviceLabel: Evalogik Dimmer Switch
+    deviceLabel: Evalogik Smart Plug (ZW39)
     manufacturerId: 0x0312
     productType: 0xC000
     productId: 0xC002
-    deviceProfileName: switch-level
+    deviceProfileName: evalogik-dimmer
   - id: 0371/0103/0025
     deviceLabel: Aeotec Dimmer Switch
     manufacturerId: 0x0371

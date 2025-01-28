@@ -369,6 +369,23 @@ local devices = {
     PARAMETERS = {
     statusLEDmode = {parameter_number = 7, size = 4}
     }
+  },
+  EVALOGIK_DIMMER = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0312,
+      product_types = 0xC000,
+      product_ids = 0xC002
+    },
+    PARAMETERS = {
+      locatorLedStatus = {parameter_number = 1, size = 1},
+      autoOffTimer = {parameter_number = 2, size = 4},
+      autoOnTimer = {parameter_number = 3, size = 4},
+      powerRestoreState = {parameter_number = 4, size = 1},
+      dimmerSpeed = {parameter_number = 5, size = 1},
+      minimumDimming = {parameter_number = 6, size = 1},
+      maximumDimming = {parameter_number = 8, size = 1},
+      dimmerSpeedFromOff = {parameter_number = 9, size = 1}
+    }
   }
 }
 

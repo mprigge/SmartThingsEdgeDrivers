@@ -1,6 +1,6 @@
-name: 'Z-Wave Switch'
+name: 'Evalogik Z-Wave Dimmer'
 packageKey: 'zwave-switch'
 permissions:
   zwave: {}
-description: "SmartThings driver for Z-Wave switch devices"
+description: "Customized SmartThings driver for Evalogik Z-Wave dimmer devices"
 vendorSupportInformation: "https://support.smartthings.com"

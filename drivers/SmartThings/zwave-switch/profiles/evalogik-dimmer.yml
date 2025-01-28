@@ -1,0 +1,85 @@
+name: evalogik-dimmer
+components:
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: switchLevel
+    version: 1
+    config:
+      values:
+        - key: "level.value"
+          range: [1, 100]
+  - id: refresh
+    version: 1
+  categories:
+  - name: Switch
+preferences:
+  - name: "locatorLedStatus"
+    title: "Locator LED Status"
+    description: "LED indicator mode (default: Status Mode). Status Mode = Load on, LED on; Locator Mode = Load off, LED on; LED off = LED always off."
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Status Mode"
+        1: "Locator Mode"
+        2: "LED off"
+      default: 0
+  - name: "autoOffTimer"
+    title: "Auto Off Timer"
+    description: "Set the time in minutes for the switch to automatically turn off after being turned on (default: 0). Set to 0 to disable."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - name: "autoOnTimer"
+    title: "Auto On Timer"
+    description: "Set the time in minutes for the switch to automatically turn on after being turned off (default: 0). Set to 0 to disable."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65535
+      default: 0
+  - name: "powerRestoreState"
+    title: "Power Restore State"
+    description: "State after power restoration (default: Previous State)"
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Previous State"
+        1: "Output Off"
+        2: "Output On"
+      default: 0
+  - name: "dimmerSpeed"
+    title: "Dimmer Speed"
+    description: "Set the time in seconds to adjust from minimum brightness to maximum brightness (default: 4s)."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 10
+      default: 4
+  - name: "minimumDimming"
+    title: "Minimum Dimming"
+    description: "Set the minimum dimming percentage (default: 10%). Set to 0 to disable."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 99
+      default: 10
+  - name: "maximumDimming"
+    title: "Maximum Dimming"
+    description: "Set the maximum dimming percentage (default: 99%). Set to 0 to disable."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 99
+      default: 99
+  - name: "dimmerSpeedFromOff"
+    title: "Dimmer Speed from Off"
+    description: "Set the time in seconds to adjust from off to maximum brightness (default: 2s)."
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 10
+      default: 2
