@@ -17,13 +17,14 @@ components:
 preferences:
   - name: "locatorLedStatus"
     title: "Locator LED Status"
-    description: "LED indicator mode (default: Status Mode). Status Mode = Load on, LED on; Locator Mode = Load off, LED on; LED off = LED always off."
+    description: "LED indicator mode (default: Locator Mode). Status Mode = Load on, LED on; Locator Mode = Load off, LED on."
     preferenceType: enumeration
     definition:
       options:
-        0: "Status Mode"
-        1: "Locator Mode"
-        2: "LED off"
+        0: "Locator Mode"
+        1: "Status Mode"
+        2: "LED Always Off"
+        3: "LED Always On"
       default: 0
   - name: "autoOffTimer"
     title: "Auto Off Timer"
@@ -47,18 +48,18 @@ preferences:
     preferenceType: enumeration
     definition:
       options:
-        0: "Previous State"
-        1: "Output Off"
-        2: "Output On"
-      default: 0
-  - name: "dimmerSpeed"
-    title: "Dimmer Speed"
-    description: "Set the time in seconds to adjust from minimum brightness to maximum brightness (default: 4s)."
+        0: "Output Off"
+        1: "Output On"
+        2: "Previous State"
+      default: 2
+  - name: "localDimmingSpeed"
+    title: "Local Dimming Speed"
+    description: "Set the time in seconds to adjust from off to selected brightness when pressing the switch (default: 1s)."
     preferenceType: integer
     definition:
       minimum: 0
       maximum: 10
-      default: 4
+      default: 1
   - name: "minimumDimming"
     title: "Minimum Dimming"
     description: "Set the minimum dimming percentage (default: 10%). Set to 0 to disable."
@@ -75,11 +76,20 @@ preferences:
       minimum: 0
       maximum: 99
       default: 99
-  - name: "dimmerSpeedFromOff"
-    title: "Dimmer Speed from Off"
-    description: "Set the time in seconds to adjust from off to maximum brightness (default: 2s)."
+  - name: "dimmerSpeedControl"
+    title: "Dimmer Speed Control"
+    description: "Set whether to dim when changing power state or to change state instantly (default: Use Dimming Speed)."
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Use Dimming Speed"
+        1: "On/Off Instantly"
+      default: 0
+  - name: "dimmingSpeed"
+    title: "Dimming Speed"
+    description: "Set the time in seconds to adjust from minimum brightness to maximum brightness when holding the button (default: 4s)."
     preferenceType: integer
     definition:
       minimum: 0
       maximum: 10
-      default: 2
+      default: 4

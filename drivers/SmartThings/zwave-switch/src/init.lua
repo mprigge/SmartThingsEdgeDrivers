@@ -116,6 +116,23 @@ local function lazy_load_if_possible(sub_driver_name)
 
 end
 
+-- Some ZW39's do not honor the setting of parameter 10 when receiving remote commands
+-- So, we provide a constant duration to ramp dimming and on/off
+local function turn_on_with_duration(driver, device, command)
+  local last_level = device:get_latest_state("main", capabilities.switchLevel.ID, "level", 99)
+  local level = last_level - 1 or 99
+  device:send(SwitchMultilevel:Set({ value = level, duration = 2 }))
+end
+
+local function turn_off_with_duration(driver, device, command)
+  device:send(SwitchMultilevel:Set({ value = 0, duration = 2 }))
+end
+
+local function set_level_with_duration(driver, device, command)
+  local level = command.args.level - 1
+  device:send(SwitchMultilevel:Set({ value = level, duration = 2 }))
+end
+
 -------------------------------------------------------------------------------------------
 -- Register message handlers and run driver
 -------------------------------------------------------------------------------------------
@@ -140,6 +157,15 @@ local driver_template = {
   zwave_handlers = {
     [cc.SWITCH_MULTILEVEL] = {
       [SwitchMultilevel.STOP_LEVEL_CHANGE] = switch_multilevel_stop_level_change_handler
+    }
+  },
+  capability_handlers = {
+    [capabilities.switch.ID] = {
+      [capabilities.switch.commands.on.NAME] = turn_on_with_duration,
+      [capabilities.switch.commands.off.NAME] = turn_off_with_duration
+    },
+    [capabilities.switchLevel.ID] = {
+      [capabilities.switchLevel.commands.setLevel.NAME] = set_level_with_duration
     }
   },
   sub_drivers = {

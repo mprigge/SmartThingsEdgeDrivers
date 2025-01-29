@@ -379,12 +379,13 @@ local devices = {
     PARAMETERS = {
       locatorLedStatus = {parameter_number = 1, size = 1},
       autoOffTimer = {parameter_number = 2, size = 4},
-      autoOnTimer = {parameter_number = 3, size = 4},
-      powerRestoreState = {parameter_number = 4, size = 1},
-      dimmerSpeed = {parameter_number = 5, size = 1},
-      minimumDimming = {parameter_number = 6, size = 1},
-      maximumDimming = {parameter_number = 8, size = 1},
-      dimmerSpeedFromOff = {parameter_number = 9, size = 1}
+      autoOnTimer = {parameter_number = 4, size = 4},
+      powerRestoreState = {parameter_number = 6, size = 1},
+      localDimmingSpeed = {parameter_number = 7, size = 1},
+      minimumDimming = {parameter_number = 8, size = 1},
+      maximumDimming = {parameter_number = 9, size = 1},
+      dimmerSpeedControl = {parameter_number = 10, size = 1},
+      dimmingSpeed = {parameter_number = 11, size = 1},
     }
   }
 }
